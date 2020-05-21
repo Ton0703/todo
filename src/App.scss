@@ -14,6 +14,7 @@
 
 
   .main {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     display: flex;
@@ -32,9 +33,9 @@
     .add-container {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       margin-top: 20px;
-      
+
 
       .add {
         width: 70%;
@@ -45,53 +46,54 @@
         justify-content: space-between;
         padding: 5px;
 
-        .add-input{
+        .add-input {
           width: 80%;
           width: 100%;
-          
-          input{
+
+          input {
             width: 100%;
             height: 100%;
             border: none;
             outline: none;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
 
-            &::placeholder{
+            &::placeholder {
               color: gray;
             }
           }
         }
-        .add-btn{
+
+        .add-btn {
           width: 20%;
           height: 100%;
           cursor: pointer;
 
-          .btn{
-            width: 100%;
-           height: 100%;
-
-          .btn-svg{
+          .btn {
             width: 100%;
             height: 100%;
-            fill: #E0C3FC;
-          }
+
+            .btn-svg {
+              width: 100%;
+              height: 100%;
+              fill: #E0C3FC;
+            }
           }
         }
       }
 
       .select {
-        width: 25%;
+        flex: 1;
         background-color: #fff;
 
-        select{
+        select {
           width: 100%;
           height: 100%;
           border: none;
           font-size: 1.2rem;
           text-align: center;
           outline: none;
-          
-          option{
+
+          option {
             text-align: center;
             font-size: 1.2rem
           }
@@ -99,73 +101,110 @@
       }
     }
 
-    .todoList{
+    .todoList {
       width: 100%;
       display: flex;
       flex-direction: column;
       margin-top: 10px;
 
-      .todoItem{
+      .todoItem {
         width: 100%;
-        display: flex;
-      
-        align-items: center;
         margin-bottom: 5px;
-      
-        .content{
-          width: 70%;
-          padding: 10px;
-          font-size: 1.5rem;
-          line-height: 1.2;
-          background-color: #fff;
-          margin-right: 5px;
-        }
-  
-        .item-btn{
+
+        div {
+          width: 100%;
           display: flex;
-          justify-content: space-between;
-          flex: 1;
-  
-          .complete{
-            width: 48%;
-            height: 48.5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: lightgreen;
-  
-            svg{
-              width: 80%;
-              height: 80%;
-              fill: #fff;
+          align-items: center;
+
+          .content {
+            position: relative;
+            width: 70%;
+            padding: 10px;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            background-color: #fff;
+            margin-right: 5px;
+
+            span {
+              position: relative;
+
+              &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                display: block;
+                background-color: #000;
+                left: 0;
+                top: 50%;
+                transform: scaleX(0);
+                transform-origin: left;
+              }
             }
           }
-  
-          .delete{
-            width: 48%;
-            height: 48.5px;
+
+          .item-btn {
             display: flex;
-            justify-content: center;
-            align-items:  center;
-            background-color: lightcoral;
-  
-            svg{
-              width: 60%;
-              height: 60%;
+            justify-content: space-between;
+            flex: 1;
+
+            .complete {
+              width: 48%;
+              height: 48.5px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: lightgreen;
+
+              svg {
+                width: 80%;
+                height: 80%;
+                fill: #fff;
+              }
+            }
+
+            .delete {
+              width: 48%;
+              height: 48.5px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: lightcoral;
+
+              svg {
+                width: 60%;
+                height: 60%;
+              }
             }
           }
         }
-      } 
-      .isDelete{
+
+        .isComplete {
+          transition: all .5s ease;
+          opacity: .3;
+
+          .content {
+            span {
+              position: relative;
+
+              &::after {
+                transform: scaleX(1);
+                transition: transform .3s ease;
+              }
+            }
+          }
+        }
+      }
+
+      .isDelete {
         transform: translateY(8rem) rotateZ(20deg);
         opacity: 0;
         transition: all .5s ease;
       }
-      .isComplete{
-        opacity: .3;
-      }
 
-      
+
     }
+
+   
   }
 }
